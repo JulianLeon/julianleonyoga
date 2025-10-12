@@ -34,8 +34,8 @@ ADMIN_EMAIL = os.getenv('ADMIN_EMAIL')
 
 
 DATABASE_URL = os.getenv("DATABASE_URL")
+import dj_database_url
 if DATABASE_URL:
-    import dj_database_url
     DATABASES = {
         "default": dj_database_url.config(
             default=DATABASE_URL,
