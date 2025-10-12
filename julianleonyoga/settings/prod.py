@@ -16,8 +16,8 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://hiddengem-production.up.railway.app',
     'https://*.railway.app',
-    'julianleonyoga.com',
-    '0.0.0.0:8080'
+    'https://julianleonyoga.com',
+    'https://0.0.0.0:8080'
     ]
 
 ##
