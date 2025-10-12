@@ -63,7 +63,7 @@ a {
 }
 
 .container-primary {
-    background-color: var(--primary);
+  background-color: var(--primary);
 }
 
 /* Default Styles End */
@@ -100,7 +100,6 @@ a {
   transform: translateY(-2px);
 }
 /* Button Styles End */
-
 
 /* Navbar Styles Start */
 header {
@@ -142,8 +141,9 @@ nav .logo {
 }
 nav .logo img {
   height: 6rem;
-  width: 100%;
+  width: 80%;
   margin-right: 10px;
+  aspect-ratio: 16/5 !important;
 }
 
 nav ul {
@@ -263,60 +263,63 @@ nav a.nav-active {
 
 /* Container Styles Start */
 .container {
-    padding: 2rem;
+  padding: 2rem;
 }
 /* - */
 /* Media for all above except navbar */
 /* - */
 /* Große Smartphones / kleine Tablets */
 @media screen and (min-width: 480px) {
-    body {
-        font-size: 1.6rem;
-    }
+  body {
+    font-size: 1.6rem;
+  }
 
-     .btn {
+  .btn {
     padding: 1.5rem 2rem;
     font-size: 1.6rem;
   }
 
-    .container {
-        padding: 4rem 8rem;
-    }
+  .container {
+    padding: 4rem 8rem;
+  }
+
+  nav .logo img {
+  width: 100%;
+}
 }
 
 /* Tablets */
 @media screen and (min-width: 768px) {
-      body {
-        font-size: 1.8rem;
-    }
+  body {
+    font-size: 1.8rem;
+  }
 
-
-     .container {
-        padding: 8rem 12rem;
-    }
+  .container {
+    padding: 8rem 12rem;
+  }
 }
 
 /* Laptops / kleine Desktops */
 @media screen and (min-width: 1024px) {
-      body {
-        font-size: 2rem;
-    }
+  body {
+    font-size: 2rem;
+  }
 
-    .container {
-        padding: 8rem;
-    }
+  .container {
+    padding: 8rem;
+  }
 }
 
 /* Große Desktops */
 @media screen and (min-width: 1440px) {
   body {
-        font-size: 2rem;
-    }
+    font-size: 2rem;
+  }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
 /* Container Styles End */
 

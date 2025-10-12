@@ -17,4 +17,10 @@ window.addEventListener("scroll", function () {
   }
 });
 
-
+// Menü schließen, wenn ein Link in der mobilen Navigation geklickt wird
+document.querySelectorAll(".menubar ul li a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navbar.classList.remove("active");
+    mobileNav.classList.remove("hamburger-active");
+  });
+});
