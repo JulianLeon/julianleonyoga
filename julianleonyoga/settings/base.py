@@ -71,7 +71,6 @@ if DATABASE_URL:
     # 🚨 Hier wird die Logik implementiert, die in allen Settings gilt!
     DATABASES = {
         "default": dj_database_url.config(
-            default=DATABASE_URL,
             conn_max_age=600  # Optionale Einstellung für langlebige Verbindungen (gut für Prod)
         )
     }
