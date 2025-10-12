@@ -62,10 +62,11 @@ WSGI_APPLICATION = 'julianleonyoga.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+import dj_database_url
+
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if DATABASE_URL:
-    import dj_database_url
     
     # 🚨 Hier wird die Logik implementiert, die in allen Settings gilt!
     DATABASES = {

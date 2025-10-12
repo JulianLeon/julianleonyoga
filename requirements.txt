@@ -2,6 +2,7 @@ asgiref==3.9.1
 certifi==2025.8.3
 charset-normalizer==3.4.3
 cloudinary==1.44.1
+dj-database-url==3.0.1
 Django==5.2.5
 django-browser-reload==1.18.0
 django-cloudinary-storage==0.3.0
@@ -13,11 +14,11 @@ Markdown==3.9
 mistune==3.1.4
 packaging==25.0
 pillow==11.3.0
+psycopg==3.2.10
+psycopg-binary==3.2.10
 python-dotenv==1.1.1
 requests==2.32.5
 six==1.17.0
 sqlparse==0.5.3
 Unidecode==1.4.0
 urllib3==2.5.0
-dj-database-url
-psycopg[binary]
