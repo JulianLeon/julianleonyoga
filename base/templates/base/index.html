@@ -1,0 +1,219 @@
+{% extends 'base/layout.html' %} {% load static %} 
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+  integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
+{% endblock %}
+
+{% block meta %}This is the meta of homepage!{% endblock %}
+<!-- Content comes here -->
+{% block content %}
+<main>
+
+  <div class="container">
+    <section class="home-hero">
+      <div class="home-hero-one">
+        <img
+          src="https://res.cloudinary.com/djaxscec5/image/upload/f_auto,q_auto/v1755376399/hero_s2dhal.png"
+          alt="Julian zeigt eine Yogapose"
+        />
+      </div>
+      <div class="home-hero-two">
+        <h1>Yoga in Braunau am Inn</h1>
+        <p>
+          Finde innere Balance, Stärke und Flexibilität – in Yoga-Kursen, die auf
+          Erfahrung, Bewegung und Meditation basieren. Kontaktiere mich und starte
+          deine Yoga-Reise. Namaste!
+        </p>
+        <p>
+          <small
+            >Ideal für alle, die aus Burghausen, Burgkirchen oder Hochburg kommen.
+            Entdecke Yoga, das zu deinem Alltag passt.</small
+          >
+        </p>
+        <div class="home-hero-buttons">
+          <a href="#contact" class="btn btn-primary">Kontaktiere mich</a>
+          <a href="#courses" class="btn btn-secondary">Aktuelle Kurse</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <section class="home-banner">
+    <p class="quote">
+      „Yoga is the journey of the self, through the self, to the self.“
+    </p>
+    <p><small class="quote-small">– Bhagavad Gita</small></p>
+  </section>
+  
+  <div class="container container-beige">
+    <section class="home-about" id="about">
+      <div class="home-about-text">
+        <h2>Meine Verbindung mit Yoga</h2>
+        <p>
+          Hallo, ich bin Julian aus Braunau am Inn, und Yoga ist meine
+          Leidenschaft.
+        </p>
+        <p>
+          Meine Ausbildung absolvierte ich in Rishikesh, Indien. Seit Anfang 2020
+          unterrichte ich Yoga und habe in dieser Zeit wertvolle 3 Jahre Erfahrung
+          gesammelt. Neben meiner Tätigkeit als Yogalehrer bilde ich mich zum
+          Physiotherapeuten weiter.
+        </p>
+        <p>
+          Die Verbindung zwischen Körper und Psyche fasziniert mich zutiefst. Yoga
+          hat mir geholfen, mich auf allen Ebenen bewusster wahrzunehmen, und
+          jetzt möchte ich dieses Geschenk gerne mit anderen teilen.
+        </p>
+        <p>
+          Ich freue mich darauf, dich auf deiner eigenen Reise zu begleiten und
+          dir zu helfen, die Verbindung zwischen Körper und Geist zu vertiefen und
+          gleichzeitig Mobilität und Stabilität zu etablieren.
+        </p>
+      </div>
+      <div class="home-about-img">
+        <img
+          src="https://res.cloudinary.com/djaxscec5/image/upload/f_auto,q_auto/v1755376464/me_kmq7xe.jpg"
+          alt="Julian in der Natur"
+        />
+      </div>
+    </section>
+  </div>
+  
+  <!-- Courses Section Start -->
+  <div class="outer-container container-primary">
+    <div class="container">
+      <section class="home-courses" id="courses">
+        <h2>Aktuelle Kurse</h2>
+        <div class="home-courses-container">
+          <div class="home-courses-card">
+            <h3>Burgkirchen</h3>
+            <p>Dienstag</p>
+            <p>18:30 - 19:45 Hatha Yoga</p>
+            <p>
+              Gemeinsam fließen wir hier durch sorgfältig zusammengestellte
+              Yogasequenzen. Die Einheiten sind für jeden geeignet, da ich mit
+              Modifikationen arbeite, um vom Anfänger bis zum Profi jeden
+              einzubinden.
+            </p>
+            <a target="_blank" href="https://maps.app.goo.gl/DHJw8EHqUrkX7Pxy5"
+              >Klicke für eine Wegbeschreibung!</a
+            >
+            <a href="#contact" class="btn btn-primary">Kontakt</a>
+          </div>
+          <div class="home-courses-card">
+            <h3>Hochburg-Ach/ Burghausen</h3>
+            <p>Donnerstag</p>
+            <p>17:45 - 19:00 Hatha Yoga</p>
+            <p>
+              Gemeinsam fließen wir hier durch sorgfältig zusammengestellte
+              Yogasequenzen. Die Einheiten sind für alle Yogabegeisterten
+              geeignet, denn ich integriere Modifikationen, um sowohl Anfängern
+              als auch Profis gerecht zu werden.
+            </p>
+            <a target="_blank" href="https://maps.app.goo.gl/QHJMFCvFamZyQiZn9"
+              >Klicke für eine Wegbeschreibung!</a
+            >
+            <a href="#contact" class="btn btn-primary">Kontakt</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <!-- Courses Section End -->
+  
+  <!-- Contact and Description Section Start -->
+  <div class="container">
+    <section class="contact-description-container">
+      <div class="description">
+        <h2>Bestandteile der Einheiten</h2>
+  
+        <div class="accordion-container">
+          <div class="accordion">
+            <div class="accordion-header">
+              <h3>Hatha Yoga</h3>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p>
+                Hatha Yoga basiert auf körperlichen Übungen, Atemkontrolle und
+                Meditation. Der Begriff ‚Hatha‘ leitet sich von den
+                Sanskrit-Wörtern ‚ha‘ (Sonne) und ‚tha‘ (Mond) ab, symbolisiert
+                die Vereinigung gegensätzlicher Kräfte und strebt nach der
+                Harmonie von Körper und Geist.
+              </p>
+              <p>
+                In den Klassen werden unterschiedliche Asanas (Körperhaltungen)
+                praktiziert, um körperliche Stärke, Flexibilität und Ausdauer zu
+                verbessern. Gleichzeitig wird die richtige Atmung betont, um
+                Energie im Körper zu lenken und den Geist zu beruhigen. Meditation
+                und Entspannungstechniken sind ebenfalls integrale Bestandteile
+                dieser Praxis, um Stress abzubauen und innere Ruhe zu fördern.
+              </p>
+              <p>
+                Hatha Yoga Kurse findest du derzeit in Burgkirchen und in Hochburg
+                Ach – Burghausen.
+              </p>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion-header">
+              <h3>Pranayama</h3>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p>
+                Pranayama ist eine Atemkontrollpraxis im Yoga, die die bewusste
+                Lenkung des Atems zur Verbesserung von Gesundheit und Entspannung
+                nutzt. Durch gezielte Atemübungen werden Lebensenergie (Prana)
+                gesteigert und Stress reduziert. Pranayama fördert mentale
+                Klarheit, emotionales Gleichgewicht und verbessert die allgemeine
+                Vitalität.
+              </p>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion-header">
+              <h3>Meditation</h3>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p>
+                Meditation ist eine geistige Praxis, die innere Ruhe und
+                Achtsamkeit fördert. Sie involviert das Fokussieren des Geistes
+                auf einen bestimmten Punkt, Gedanken oder Atem, um den Geist zu
+                beruhigen und Stress abzubauen. Meditation bietet zahlreiche
+                Vorteile, darunter Stressabbau, verbesserte Konzentration,
+                emotionales Wohlbefinden und spirituelle Entwicklung. Sie kann
+                leicht in den Alltag integriert werden und trägt zur Förderung von
+                innerer Gelassenheit und mentaler Klarheit bei.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact" id="contact">
+        {% if not form_submitted %}
+        <h2>Kontakt</h2>
+  
+          {% if form_submitted %}
+        <div class="success-message">
+          <p>Vielen Dank für deine Nachricht! Ich melde mich bald bei dir.</p>
+        </div>
+        {% else %} 
+          {% include 'contact/contact.html' %} 
+        {% endif %}
+        {% endif %}
+      </div>
+    </section>
+  </div>
+  <!-- Contact and Description Section End -->
+</main>
+
+{% endblock %}

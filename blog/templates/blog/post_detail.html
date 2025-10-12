@@ -1,0 +1,31 @@
+{% extends "blog/blog_base.html" %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'blog/css/post_styles.css' %}">
+{% endblock %}
+
+
+{% block meta %}{{post.meta_description}}{% endblock %}
+
+{% block blog_content %}
+
+
+   <h1>{{post.title}}</h1>
+   <p class="written-by">by: <strong>{{post.author}}</strong> - {{post.updated_at}}</p>
+   <div class="post-detail-hero">
+   <div class="overlay"></div>
+      <picture>
+         <img 
+         src="{{post.header_image.url}}" 
+         alt="Hero Hintergrundbild" fetchpriority="high">
+      </picture>
+   </div>
+   <div class="post-body">
+      {{post.formatted_content|safe}}
+     
+   
+   </div>
+
+{% endblock %}

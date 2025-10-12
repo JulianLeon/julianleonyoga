@@ -1,0 +1,177 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {{ media }}
+    
+    <!-- Lade Markdownx CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'markdownx/admin/css/markdownx.min.css' %}">
+    
+    <style>
+        /* Zusätzliche Styles für bessere Sichtbarkeit */
+        .markdownx-editor {
+            border: 2px solid #007cba !important;
+            min-height: 400px !important;
+        }
+        
+        .markdownx-toolbar {
+            background: #f0f0f0 !important;
+            padding: 10px !important;
+            border: 1px solid #ddd !important;
+            margin-bottom: 10px !important;
+        }
+        
+        .drag-over {
+            border-color: #00a0d2 !important;
+            background-color: #f0f8ff !important;
+        }
+    </style>
+{% endblock %}
+
+{% block admin_change_form_document_ready %}
+    {{ block.super }}
+    
+    <!-- Lade Markdownx JavaScript -->
+    <script type="text/javascript" src="{% static 'markdownx/js/markdownx.min.js' %}"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== MARKDOWNX ADMIN SETUP ===');
+            
+            // Warte kurz bis alles geladen ist
+            setTimeout(function() {
+                // Suche das body Textarea
+                const bodyTextarea = document.querySelector('textarea[name="body"]');
+                
+                if (bodyTextarea) {
+                    console.log('✓ Body textarea found');
+                    
+                    // Markdownx Attribute setzen
+                    bodyTextarea.setAttribute('data-markdownx-editor', 'true');
+                    bodyTextarea.classList.add('markdownx-editor');
+                    
+                    // Setup Editor falls markdownx geladen ist
+                    if (typeof markdownx !== 'undefined') {
+                        console.log('✓ Markdownx available, setting up editor...');
+                        markdownx.setupEditor(bodyTextarea);
+                    } else {
+                        console.error('✗ Markdownx not loaded!');
+                        // Manual setup als Fallback
+                        setupMarkdownEditorManual(bodyTextarea);
+                    }
+                } else {
+                    console.error('✗ Body textarea not found!');
+                    console.log('Available textareas:', document.querySelectorAll('textarea'));
+                }
+            }, 500);
+        });
+        
+        // Fallback: Manueller Editor Setup
+        function setupMarkdownEditorManual(textarea) {
+            console.log('Setting up manual markdownx editor...');
+            
+            const wrapper = document.createElement('div');
+            wrapper.className = 'markdownx';
+            textarea.parentNode.insertBefore(wrapper, textarea);
+            
+            const toolbar = document.createElement('div');
+            toolbar.className = 'markdownx-toolbar';
+            toolbar.innerHTML = `
+                <button type="button" onclick="uploadImageManual(this)">📷 Bild hochladen</button>
+                <button type="button" onclick="togglePreviewManual(this)">👁️ Vorschau</button>
+                <input type="file" accept="image/*" style="display:none" onchange="handleFileUpload(this)">
+            `;
+            
+            const preview = document.createElement('div');
+            preview.className = 'markdownx-preview';
+            preview.style.display = 'none';
+            preview.style.border = '1px solid #ddd';
+            preview.style.padding = '15px';
+            preview.style.background = '#fafafa';
+            
+            wrapper.appendChild(toolbar);
+            wrapper.appendChild(textarea);
+            wrapper.appendChild(preview);
+            
+            console.log('✓ Manual editor setup complete');
+        }
+        
+        // Global functions für Manual Setup
+        window.uploadImageManual = function(button) {
+            const fileInput = button.parentElement.querySelector('input[type="file"]');
+            fileInput.click();
+        };
+        
+        window.handleFileUpload = function(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            const button = input.parentElement.querySelector('button');
+            const textarea = input.closest('.markdownx').querySelector('textarea');
+            const originalText = button.textContent;
+            
+            button.textContent = '⏳ Uploading...';
+            button.disabled = true;
+            
+            const formData = new FormData();
+            formData.append('markdownx-image-file', file);
+            
+            fetch('/markdownx/upload/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            })
+            .then(response => {
+                console.log('Upload response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Upload response:', data);
+                if (data.image_url) {
+                    const imageMarkdown = `![Alt Text](${data.image_url} "Bildunterschrift")`;
+                    insertTextAtCursor(textarea, imageMarkdown);
+                    alert('✓ Bild erfolgreich hochgeladen!');
+                } else {
+                    alert('Upload failed: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Upload error:', error);
+                alert('Upload error: ' + error.message);
+            })
+            .finally(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+                input.value = '';
+            });
+        };
+        
+        window.togglePreviewManual = function(button) {
+            const wrapper = button.closest('.markdownx');
+            const textarea = wrapper.querySelector('textarea');
+            const preview = wrapper.querySelector('.markdownx-preview');
+            
+            if (preview.style.display === 'none') {
+                preview.innerHTML = '<p>Vorschau: ' + textarea.value.replace(/\n/g, '<br>') + '</p>';
+                preview.style.display = 'block';
+                button.textContent = '📝 Editor';
+            } else {
+                preview.style.display = 'none';
+                button.textContent = '👁️ Vorschau';
+            }
+        };
+        
+        function insertTextAtCursor(textarea, text) {
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const value = textarea.value;
+            
+            textarea.value = value.substring(0, start) + text + value.substring(end);
+            textarea.selectionStart = textarea.selectionEnd = start + text.length;
+            textarea.focus();
+        }
+    </script>
+{% endblock %}

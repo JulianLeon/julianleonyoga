@@ -1,0 +1,23 @@
+.impressum h2 {
+    margin-bottom: 2rem;
+}
+.impressum h3 {
+    margin-bottom: 2rem;
+}
+
+.impressum p {
+    margin-bottom: 4rem;
+}   
+
+.impressum ul {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.impressum ul li {
+    margin-bottom: 1rem;
+}
+
+.impressum ul.list-style {
+    list-style-type: disc;
+}

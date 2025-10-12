@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <!-- Markdownx CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'markdownx/admin/css/markdownx.min.css' %}">
+{% endblock %}
+
+{% block extrajs %}
+    {{ block.super }}
+    <!-- Markdownx JavaScript -->
+    <script type="text/javascript" src="{% static 'markdownx/js/markdownx.min.js' %}"></script>
+{% endblock %}

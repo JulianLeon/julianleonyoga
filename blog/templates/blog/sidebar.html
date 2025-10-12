@@ -1,0 +1,11 @@
+<div class="sidebar-card">
+  <h3>
+    <i style="color: rgb(255, 119, 0)" class="fa-solid fa-fire"></i>Themen im
+    Trend
+  </h3>
+  <div class="sidebar-card-links">
+    {% for category in categories %}
+    <a class="btn btn-sidebar-links" href="{{ category.get_absolute_url }}">{{category.name}}</a>
+    {% endfor %}
+  </div>
+</div>

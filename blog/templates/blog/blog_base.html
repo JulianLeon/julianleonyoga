@@ -1,0 +1,23 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+
+{% block title %}| Blog{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+{% endblock %}
+
+<!-- Content Starts -->
+
+{% block content %}
+  <div class="blog-wrapper">
+    
+    <main>
+      {% block blog_content %}{% endblock %}
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-cards-container">
+       {% include 'blog/sidebar.html' %}
+      </div>
+    </aside>
+  </div>
+{% endblock %}

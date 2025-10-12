@@ -1,0 +1,54 @@
+{% extends 'base/layout.html' %} {% load static %} 
+{% block title %} | Impressum{% endblock %} 
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/impressum.css' %}" />
+{% endblock %} {% block content %}
+
+<div class="container">
+  <div class="impressum">
+    <h2>Impressum für die Website von Julianleonyoga</h2>
+    <p>Verantwortlich für den Inhalt dieser Website:</p>
+    <ul>
+      <li>Julian Sagberger</li>
+      <li>Am Anger 12</li>
+      <li>4950 Altheim</li>
+      <li>Österreich</li>
+      <li>
+        E-Mail:
+        <a href="mailto:julian.sagberger@gmail.com"
+          >julian.sagberger@gmail.com</a
+        >
+      </li>
+      <li>Telefon: +436603245206</li>
+    </ul>
+
+    <p>
+      Haftungsausschluss: Die Informationen auf dieser Website dienen
+      ausschließlich Informationszwecken. Der Inhaber dieser Website übernimmt
+      keine Haftung für die Richtigkeit, Vollständigkeit oder Aktualität der
+      bereitgestellten Informationen. Die Nutzung der Informationen auf dieser
+      Website erfolgt auf eigene Gefahr.
+    </p>
+
+    <p>
+      Urheberrechtshinweis: Die Inhalte dieser Website, einschließlich Texte,
+      Bilder und Videos, sind urheberrechtlich geschützt und dürfen ohne
+      vorherige schriftliche Genehmigung des Eigentümers nicht vervielfältigt,
+      verbreitet oder anderweitig verwendet werden.
+    </p>
+
+    <p>
+      Hinweis zum Datenschutz: Diese Website verwendet Cookies und ähnliche
+      Technologien, um die Benutzererfahrung zu verbessern. Weitere
+      Informationen finden Sie in unserer Datenschutzerklärung.
+    </p>
+
+    <p>
+      Hinweis zu externen Links: Diese Website enthält Links zu externen
+      Websites, für deren Inhalt der Betreiber dieser Website nicht
+      verantwortlich ist.
+    </p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+/* Große Smartphones / kleine Tablets */
+@media screen and (min-width: 480px) {
+ 
+}
+
+/* Tablets */
+@media screen and (min-width: 768px) {
+ 
+}
+
+/* Laptops / kleine Desktops */
+@media screen and (min-width: 1024px) {
+  
+}
+
+/* Große Desktops */
+@media screen and (min-width: 1440px) {
+  
+}

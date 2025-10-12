@@ -1,0 +1,54 @@
+<header>
+  <nav id="navbar">
+    <div class="logo">
+      <img
+        src="https://res.cloudinary.com/djaxscec5/image/upload/v1755376399/logo_ebsr9o.png"
+        alt="logo"
+      />
+    </div>
+    <div class="navbar-right">
+      <ul class="desktop">
+        <li>
+          <a
+            href="{% url 'base:home' %}"
+            class="{% if request.path == '/' %}nav-active{% endif %}"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'base:home' %}#about">Über Mich</a>
+        </li>
+        <li>
+          <a href="{% url 'base:home' %}#courses">Kurse</a>
+        </li>
+        <li>
+          <a href="{% url 'base:home' %}#contact">Kontakt</a>
+        </li>
+       
+      </ul>
+    </div>
+
+    <div class="hamburger">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+    <div class="menubar">
+      <ul class="mobile">
+        <li>
+          <a href="{% url 'base:home' %}">Home</a>
+        </li>
+        <li>
+          <a href="{% url 'base:home' %}#about">Über Mich</a>
+        </li>
+        <li>
+          <a href="{% url 'base:home' %}#courses">Kurse</a>
+        </li>
+        <li>
+          <a href="{% url 'base:home' %}#contact">Kontakt</a>
+        </li>
+      
+      </ul>
+    </div>
+  </nav>
+</header>
