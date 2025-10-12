@@ -2,11 +2,20 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from pathlib import Path
+from dotenv import load_dotenv
 
+load_dotenv()
+
+environment = os.getenv('DJANGO_ENV', 'dev')
+setting_module = f'julianleonyoga.settings.{environment}'
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', setting_module)
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'julianleonyoga.settings')
+
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
