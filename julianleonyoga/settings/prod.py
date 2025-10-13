@@ -9,8 +9,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 DEBUG = False
 
-# Stelle sicher, dass Anymail in der Produktion geladen wird
-INSTALLED_APPS += ['anymail']
+
 
 ALLOWED_HOSTS = [
     '.railway.app',
