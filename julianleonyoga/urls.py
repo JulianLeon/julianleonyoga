@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from base.sitemaps import HomeSitemap
+from base.views import save_cookie_consent
 from django.views.generic.base import TemplateView
 
 from blog.views import CloudinaryImageUploadView
@@ -43,4 +44,5 @@ urlpatterns = [
     path('markdownx/upload/', CloudinaryImageUploadView.as_view(), name='markdownx_upload'),
     # Füge alle anderen markdownx URLs hinzu
     path('markdownx/', include('markdownx.urls')),
+    path('api/cookie-consent/', save_cookie_consent, name='cookie_consent'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

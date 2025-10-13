@@ -1,0 +1,73 @@
+<!-- Cookie Banner -->
+    <div id="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>🍪 Wir verwenden Cookies</h3>
+                <p>
+                    Wir nutzen Cookies für Analyse-Zwecke, um unsere Website zu verbessern. 
+                    Mit "Alle akzeptieren" stimmst du der Verwendung zu. 
+                    <a href="/datenschutz">Mehr erfahren</a>
+                </p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn accept-all" onclick="acceptAllCookies()">
+                    Alle akzeptieren
+                </button>
+                <button class="cookie-btn reject-all" onclick="rejectAllCookies()">
+                    Nur notwendige
+                </button>
+                <button class="cookie-btn settings" onclick="openCookieSettings()">
+                    Einstellungen
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-settings-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCookieSettings()">×</button>
+            <div class="modal-header">
+                <h2>Cookie-Einstellungen</h2>
+                <p style="color: #666; margin: 10px 0 0 0;">
+                    Wähle, welche Cookies du zulassen möchtest.
+                </p>
+            </div>
+
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <h3>Notwendige Cookies</h3>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <p>
+                    Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.
+                </p>
+            </div>
+
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <h3>Analyse & Statistik</h3>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="analytics-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <p>
+                    Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, 
+                    indem Informationen anonym gesammelt werden (Google Analytics).
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-btn secondary" onclick="closeCookieSettings()">
+                    Abbrechen
+                </button>
+                <button class="modal-btn primary" onclick="saveCustomSettings()">
+                    Auswahl speichern
+                </button>
+            </div>
+        </div>
+    </div>

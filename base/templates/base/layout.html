@@ -2,27 +2,13 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
-    <!-- Google Analytics Start -->
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-BYLS2Y2N5T"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-BYLS2Y2N5T");
-    </script>
-    <!-- Google Analytics End -->
+  
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="{% block meta %}{% endblock %}" />
     <title>Julianleonyoga {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/cookie-banner.css' %}" />
     <!-- Fontawesome -->
     <link
       rel="stylesheet"
@@ -44,8 +30,13 @@
     </div>
     {% include 'base/footer.html' %}
 
+    <!-- Cookie Banner -->
+    {% include 'base/cookie-banner.html' %}
+
+
     <!-- Load scripts -->
     <script src="{% static 'js/navbar.js' %}"></script>
     <script src="{% static 'js/accordion.js' %}"></script>
+    <script src="{% static 'js/cookie-consent.js' %}"></script>
   </body>
 </html>
