@@ -137,11 +137,12 @@ nav {
 
 nav .logo {
   display: flex;
+  justify-content: start;
   align-items: center;
 }
 nav .logo img {
   height: 6rem;
-  width: 80%;
+  width: auto;
   margin-right: 10px;
   aspect-ratio: 16/5 !important;
 }
@@ -283,9 +284,9 @@ nav a.nav-active {
     padding: 4rem 8rem;
   }
 
-  nav .logo img {
+  /* nav .logo img {
   width: 100%;
-}
+} */
 }
 
 /* Tablets */
