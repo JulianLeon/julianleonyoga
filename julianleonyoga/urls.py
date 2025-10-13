@@ -18,10 +18,23 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.sitemaps.views import sitemap
+from base.sitemaps import HomeSitemap
+from django.views.generic.base import TemplateView
 
 from blog.views import CloudinaryImageUploadView
 
+sitemaps = {
+    "static": HomeSitemap(),
+}
+
 urlpatterns = [
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
     path("__reload__/", include("django_browser_reload.urls")),
     path('', include('base.urls')),
     # path('blog/', include('blog.urls')),
