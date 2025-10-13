@@ -10,6 +10,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'VERY-INSECURE-FALLBACK-KEY-FOR-LOCAL-TESTI
 load_dotenv()
 
 INSTALLED_APPS = [
+    'anymail',
     'environ',
     'markdownx',
     'cloudinary',

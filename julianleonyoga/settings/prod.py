@@ -1,36 +1,49 @@
 from .base import *
+import os
 
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+# Laden der kritischen Secrets mit einem Fallback-Wert,
+# um String-Verkettungs-Fehler beim Start zu vermeiden.
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-django-key')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') 
 
 DEBUG = False
 
+# Stelle sicher, dass Anymail in der Produktion geladen wird
+INSTALLED_APPS += ['anymail']
 
 ALLOWED_HOSTS = [
     '.railway.app',
     'julianleonyoga.com',
-    '0.0.0.0'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://hiddengem-production.up.railway.app',
+    'https://hiddengem-production.up.railway.app', 
     'https://*.railway.app',
     'https://julianleonyoga.com',
-    'https://0.0.0.0:8080'
-    ]
+]
 
 ##
-## Email Settings
+## E-MAIL SETTINGS (Brevo über Anymail - Dauerhaft kostenlos)
 ##
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.getenv('ADMIN_EMAIL')  # This should be set in your .env file
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # This should be set in your .env file
-ADMIN_EMAIL = os.getenv('ADMIN_EMAIL')
+# Das Backend wird auf Brevo umgestellt.
+EMAIL_BACKEND = "anymail.backends.brevo.EmailBackend" 
 
+# Brevo API Key aus Umgebungsvariable laden (mit Fallback)
+BREVO_API_KEY = os.getenv("BREVO_API_KEY", "dummy-brevo-key") 
+
+ANYMAIL = {
+    # Anymail verwendet diesen Schlüssel für die API-Authentifizierung
+    "BREVO_API_KEY": BREVO_API_KEY,
+}
+
+# Absenderadresse wird als eigenständige Umgebungsvariable gesetzt (MUSS in Brevo verifiziert sein!)
+# Dies ist die sauberste Methode.
+DEFAULT_FROM_EMAIL = os.getenv("ADMIN_EMAIL", "julian.sagberger@gmail.com")
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+#
+## Ende E-Mail Settings
+##
 
 
 DATABASE_URL = os.getenv("DATABASE_URL")
@@ -41,8 +54,6 @@ if DATABASE_URL:
             default=DATABASE_URL,
         )
     }
-
-
 
 # Security Settings
 SECURE_SSL_REDIRECT = True

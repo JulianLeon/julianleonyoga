@@ -1,9 +1,11 @@
 asgiref==3.9.1
+Brotli==1.1.0
 certifi==2025.8.3
 charset-normalizer==3.4.3
 cloudinary==1.44.1
 dj-database-url==3.0.1
 Django==5.2.5
+django-anymail==13.1
 django-browser-reload==1.18.0
 django-cloudinary-storage==0.3.0
 django-environ==0.12.0
@@ -22,4 +24,4 @@ six==1.17.0
 sqlparse==0.5.3
 Unidecode==1.4.0
 urllib3==2.5.0
-whitenoise[brotli]
+whitenoise==6.11.0
