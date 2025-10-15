@@ -333,6 +333,11 @@ section {
   display: block;
   margin-bottom: 1rem;
 }
+
+.success-message {
+  text-align: center;
+}
+
 /* Contact End */
 /* Laptops / kleine Desktops */
 @media screen and (min-width: 1024px) {
