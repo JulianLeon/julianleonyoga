@@ -205,7 +205,7 @@ und körperliches Wohlbefinden.{% endblock %}
 
         {% if form_submitted %}
         <div class="success-message">
-          <p>Vielen Dank für deine Nachricht! Ich melde mich bald bei dir.</p>
+          <p>Danke {{ form.cleaned_data.name }}! Deine Nachricht wurde gesendet 🙏</p>
         </div>
         {% else %} {% include 'contact/contact.html' %} {% endif %} {% endif %}
       </div>

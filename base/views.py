@@ -10,9 +10,9 @@ import json
 from .models import CookieConsent
 
 from anymail.exceptions import AnymailAPIError
-import logging
 
-logger = logging.getLogger('django')
+
+
 
 # Create your views here.
 def home(request):
@@ -41,9 +41,12 @@ def home(request):
             )
             email.send(fail_silently=False)
             
+            return redirect('/?sent=true')
             
     else:
         form = ContactForm()
+
+    form_submitted = request.GET.get('sent') == 'true'
 
     context = {
         'form_submitted': form_submitted,
