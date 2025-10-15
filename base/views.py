@@ -21,19 +21,19 @@ def home(request):
     
     # Prüfe ob die Success-Message angezeigt werden soll (nach Redirect)
     if request.GET.get('sent') == 'true':
+        print("SUCCESS PAGE - form_submitted wird auf True gesetzt")
         form_submitted = True
-        # Erstelle leeres Form für den Fall, dass es noch gebraucht wird
         form = ContactForm()
     elif request.method == 'POST':
+        print("POST REQUEST empfangen")
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Daten aus Formular holen
+            print("Form ist valid - sende Email")
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             betreff = form.cleaned_data['betreff']
             nachricht = form.cleaned_data['nachricht']
 
-            # Send the Email
             email_message = EmailMessage(
                 subject=f'Kontaktanfrage: {betreff}',
                 body=f"Von: {name}\nE-Mail: {email}\n\nNachricht:\n{nachricht}",
@@ -42,13 +42,15 @@ def home(request):
                 reply_to=[email], 
             )
             email_message.send(fail_silently=False)
+            print("Email gesendet - redirecte zu /?sent=true")
             
-            # Redirect nach erfolgreichem Versand
             return redirect('/?sent=true')
     else:
-        # GET Request ohne 'sent' Parameter
+        print("GET REQUEST - zeige leeres Formular")
         form = ContactForm()
 
+    print(f"Render template mit form_submitted={form_submitted}")
+    
     context = {
         'form_submitted': form_submitted,
         'form': form
