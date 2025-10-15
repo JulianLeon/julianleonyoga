@@ -36,7 +36,7 @@ def home(request):
                 subject=f'Kontaktanfrage: {betreff}',
                 body=f"Von: {name}\nE-Mail: {email}\n\nNachricht:\n{nachricht}",
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[settings.DEFAULT_FROM_MAIL],
+                to=[settings.DEFAULT_FROM_EMAIL],
                 reply_to=[email], 
             )
             email.send(fail_silently=False)
