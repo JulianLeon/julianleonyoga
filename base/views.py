@@ -16,37 +16,38 @@ from anymail.exceptions import AnymailAPIError
 
 # Create your views here.
 def home(request):
-
     form_submitted = False
-    if request.method == 'POST':
+    form = None
+    
+    # Prüfe ob die Success-Message angezeigt werden soll (nach Redirect)
+    if request.GET.get('sent') == 'true':
+        form_submitted = True
+        # Erstelle leeres Form für den Fall, dass es noch gebraucht wird
+        form = ContactForm()
+    elif request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            ## Daten aus Formular holen
+            # Daten aus Formular holen
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             betreff = form.cleaned_data['betreff']
             nachricht = form.cleaned_data['nachricht']
-            form_submitted = True
-            # form = None
 
-            full_message = f"Von: {name}\nE-Mail: {email}\n\nNachricht:\n{nachricht}"
-
-            #Send the Email
-            email = EmailMessage(
+            # Send the Email
+            email_message = EmailMessage(
                 subject=f'Kontaktanfrage: {betreff}',
                 body=f"Von: {name}\nE-Mail: {email}\n\nNachricht:\n{nachricht}",
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 to=[settings.DEFAULT_FROM_EMAIL],
                 reply_to=[email], 
             )
-            email.send(fail_silently=False)
+            email_message.send(fail_silently=False)
             
+            # Redirect nach erfolgreichem Versand
             return redirect('/?sent=true')
-            
     else:
+        # GET Request ohne 'sent' Parameter
         form = ContactForm()
-
-    form_submitted = request.GET.get('sent') == 'true'
 
     context = {
         'form_submitted': form_submitted,
@@ -54,6 +55,7 @@ def home(request):
     }
 
     return render(request, 'base/index.html', context)
+
 
 
 def impressum(request):

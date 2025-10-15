@@ -199,16 +199,17 @@ und körperliches Wohlbefinden.{% endblock %}
           </div>
         </div>
       </div>
-      <div class="contact">
-        {% if not form_submitted %}
-        <h2 id="contact">Kontakt</h2>
-
-        {% if form_submitted %}
+    <div class="contact">
+    <h2 id="contact">Kontakt</h2>
+    
+    {% if form_submitted %}
         <div class="success-message">
-          <p>Danke {{ form.cleaned_data.name }}! Deine Nachricht wurde gesendet 🙏</p>
+            <p>Danke! Deine Nachricht wurde gesendet 🙏</p>
         </div>
-        {% else %} {% include 'contact/contact.html' %} {% endif %} {% endif %}
-      </div>
+    {% else %}
+        {% include 'contact/contact.html' %}
+    {% endif %}
+</div>
     </section>
   </div>
   <!-- Contact and Description Section End -->
