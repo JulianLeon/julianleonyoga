@@ -26,19 +26,14 @@ CSRF_TRUSTED_ORIGINS = [
 ## E-MAIL SETTINGS (Brevo über Anymail - Dauerhaft kostenlos)
 ##
 # Das Backend wird auf Brevo umgestellt.
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "anymail.backends.brevo.EmailBackend"
 
-EMAIL_HOST = 'smtp.gmail.com'
 
-EMAIL_PORT = 587
+ANYMAIL = {
+    "BREVO_API_KEY": os.getenv("BREVO_API_KEY"),
+}
 
-EMAIL_USE_TLS = True
-
-EMAIL_HOST_USER = os.getenv('ADMIN_EMAIL') # This should be set in your .env file
-
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD') # This should be set in your .env file
-
-ADMIN_EMAIL = os.getenv('ADMIN_EMAIL')
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "julian.sagberger@gmail.com")
 
 
 
